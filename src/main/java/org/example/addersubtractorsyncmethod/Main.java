@@ -1,8 +1,13 @@
 package org.example.addersubtractorsyncmethod;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) throws InterruptedException {
         Count count = new Count();
+
+        List<Integer> list = new ArrayList<>();
 
         Adder adder = new Adder(count);
         Subtractor subtractor = new Subtractor(count);
