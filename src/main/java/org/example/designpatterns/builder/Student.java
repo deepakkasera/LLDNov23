@@ -2,6 +2,8 @@ package org.example.designpatterns.builder;
 
 import org.example.inheritance3.B;
 
+import javax.naming.spi.DirObjectFactory;
+
 public class Student {
     String name;
     int age;
@@ -13,9 +15,9 @@ public class Student {
 
     private Student(Builder builder) {
         //validations start
-        if (builder.getGradYear() > 2022) {
-            throw new IllegalArgumentException("Grad Year can't be greater than 2022");
-        }
+//        if (builder.getGradYear() > 2022) {
+//            throw new IllegalArgumentException("Grad Year can't be greater than 2022");
+//        }
         //validations end
         this.name = builder.name;
         this.age = builder.age;
@@ -31,57 +33,57 @@ public class Student {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+//    public void setName(String name) {
+//        this.name = name;
+//    }
 
     public int getAge() {
         return age;
     }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
+//    public void setAge(int age) {
+//        this.age = age;
+//    }
 
     public String getUnivName() {
         return univName;
     }
 
-    public void setUnivName(String univName) {
-        this.univName = univName;
-    }
+//    public void setUnivName(String univName) {
+//        this.univName = univName;
+//    }
 
     public int getGradYear() {
         return gradYear;
     }
 
-    public void setGradYear(int gradYear) {
-        this.gradYear = gradYear;
-    }
+//    public void setGradYear(int gradYear) {
+//        this.gradYear = gradYear;
+//    }
 
     public double getPsp() {
         return psp;
     }
 
-    public void setPsp(double psp) {
-        this.psp = psp;
-    }
+//    public void setPsp(double psp) {
+//        this.psp = psp;
+//    }
 
     public String getBatch() {
         return batch;
     }
 
-    public void setBatch(String batch) {
-        this.batch = batch;
-    }
+//    public void setBatch(String batch) {
+//        this.batch = batch;
+//    }
 
     public String getCompanyName() {
         return companyName;
     }
 
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-    }
+//    public void setCompanyName(String companyName) {
+//        this.companyName = companyName;
+//    }
 
     static class Builder { // Inner Class
         String name;
@@ -155,8 +157,18 @@ public class Student {
             return this;
         }
 
+        private boolean validate() {
+            return true;
+        }
+
         public Student build() {
+            //Validations can come here as well.
+            if (this.getGradYear() > 2022) {
+                throw new IllegalArgumentException("Grad Year can't be greater than 2022");
+            }
             return new Student(this);
         }
     }
 }
+
+//A { B }
