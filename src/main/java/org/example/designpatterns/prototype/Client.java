@@ -14,6 +14,7 @@ public class Client {
         mar22MorningIntelligentStudent.setAvgBatchPsp(70.0);
         registry.register("mar22MorningIntelligentStudent", mar22MorningIntelligentStudent);
     }
+
     public static void main(String[] args) {
         //Fill the registry with template objects.
         StudentRegistry registry = new StudentRegistry();
