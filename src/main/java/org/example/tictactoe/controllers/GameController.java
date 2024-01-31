@@ -1,6 +1,7 @@
 package org.example.tictactoe.controllers;
 
 import org.example.tictactoe.exceptions.InvalidBotCountException;
+import org.example.tictactoe.exceptions.InvalidMoveException;
 import org.example.tictactoe.exceptions.InvalidNumberOfPlayersException;
 import org.example.tictactoe.models.Game;
 import org.example.tictactoe.models.GameState;
@@ -19,11 +20,11 @@ public class GameController {
                 .build();
     }
 
-    public void makeMove() {
-
+    public void makeMove(Game game) throws InvalidMoveException {
+        game.makeMove();
     }
 
-    public GameState checkState(Game game) {
+    public GameState getGameState(Game game) {
         return game.getGameState();
     }
 

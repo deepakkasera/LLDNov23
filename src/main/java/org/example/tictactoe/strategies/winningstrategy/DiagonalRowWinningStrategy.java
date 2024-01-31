@@ -13,6 +13,33 @@ public class DiagonalRowWinningStrategy implements GameWinningStrategy {
 
     @Override
     public boolean checkWinner(Board board, Move move) {
+        Symbol symbol = move.getPlayer().getSymbol();
+        int row = move.getCell().getRow();
+        int col = move.getCell().getCol();
+
+        //Left Diagonal
+        if (row == col) {
+            if (!leftDiagonal.containsKey(symbol)) {
+                leftDiagonal.put(symbol, 0);
+            }
+            leftDiagonal.put(symbol, leftDiagonal.get(symbol) + 1);
+        }
+
+        if (row + col == board.getSize() - 1) {
+            if (!rightDiagonal.containsKey(symbol)) {
+                rightDiagonal.put(symbol, 0);
+            }
+            rightDiagonal.put(symbol, rightDiagonal.get(symbol) + 1);
+        }
+
+        if (row == col && leftDiagonal.get(symbol).equals(board.getSize())) {
+            return true;
+        }
+
+        if (row + col == board.getSize() - 1 && rightDiagonal.get(symbol).equals(board.getSize())) {
+            return true;
+        }
+
         return false;
     }
 }

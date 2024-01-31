@@ -1,5 +1,7 @@
 package org.example.tictactoe.models;
 
+import java.util.Scanner;
+
 public class Player {
     private Symbol symbol;
     private String name;
@@ -42,5 +44,16 @@ public class Player {
 
     public void setPlayerType(PlayerType playerType) {
         this.playerType = playerType;
+    }
+
+    public Move executeMove() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please enter the row index where you want to make the move: ");
+        int row = scanner.nextInt();
+
+        System.out.println("Please enter the col index where you want to make the move: ");
+        int col = scanner.nextInt();
+
+        return new Move(new Cell(row, col), this);
     }
 }

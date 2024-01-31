@@ -25,7 +25,7 @@ public class Board {
                 if (board.get(i).get(j).getCellState().equals(CellState.EMPTY)) {
                     System.out.print("|   |");
                 } else {
-                    System.out.print("|" + board.get(i).get(j).getPlayer().getSymbol() + "|");
+                    System.out.print("|" + board.get(i).get(j).getPlayer().getSymbol().getaChar() + "|");
                 }
             }
             System.out.println();
