@@ -4,6 +4,7 @@ import org.example.tictactoe.models.Board;
 import org.example.tictactoe.models.Move;
 import org.example.tictactoe.models.Symbol;
 
+import java.awt.dnd.DropTargetContext;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,5 +29,14 @@ public class ColWinningStrategy implements GameWinningStrategy {
         }
 
         return colMap.get(symbol) == board.getSize();
+    }
+
+    @Override
+    public void handleUndo(Board board, Move move) {
+        int col = move.getCell().getCol();
+        Symbol symbol = move.getPlayer().getSymbol();
+
+        Map<Symbol, Integer> colMap = colMaps.get(col);
+        colMap.put(symbol, colMap.get(symbol) - 1);
     }
 }

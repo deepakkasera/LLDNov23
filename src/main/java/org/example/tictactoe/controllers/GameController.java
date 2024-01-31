@@ -29,7 +29,7 @@ public class GameController {
     }
 
     public void undo(Game game) {
-
+        game.undo();
     }
 
     public void displayBoard(Game game) {

@@ -6,6 +6,7 @@ import org.example.tictactoe.exceptions.InvalidMoveException;
 import org.example.tictactoe.exceptions.InvalidNumberOfPlayersException;
 import org.example.tictactoe.strategies.winningstrategy.GameWinningStrategy;
 
+import java.awt.image.CropImageFilter;
 import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
@@ -198,5 +199,26 @@ public class Game {
             }
         }
         return false;
+    }
+
+    public void undo() {
+        if (moves.isEmpty()) {
+            System.out.println("We can't perform UNDO operation as there are NO moves");
+            return;
+        }
+
+        Move lastMove = moves.get(moves.size() - 1);
+        moves.remove(lastMove);
+
+        Cell cell = lastMove.getCell();
+        cell.setPlayer(null);
+        cell.setCellState(CellState.EMPTY);
+
+        nextMovePlayerIndex -= 1;
+        nextMovePlayerIndex = (nextMovePlayerIndex + players.size())%players.size();
+
+        for (GameWinningStrategy winningStrategy : winningStrategies) {
+            winningStrategy.handleUndo(board, lastMove);
+        }
     }
 }
