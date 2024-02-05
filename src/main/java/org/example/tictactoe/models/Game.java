@@ -164,7 +164,7 @@ public class Game {
         Player currentPlayer = players.get(nextMovePlayerIndex);
 
         System.out.println("It is " + currentPlayer.getName() + "'s move");
-        Move currentMove = currentPlayer.executeMove();
+        Move currentMove = currentPlayer.executeMove(board);
 
         int row = currentMove.getCell().getRow();
         int col = currentMove.getCell().getCol();

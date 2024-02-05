@@ -46,7 +46,7 @@ public class Player {
         this.playerType = playerType;
     }
 
-    public Move executeMove() {
+    public Move executeMove(Board board) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter the row index where you want to make the move: ");
         int row = scanner.nextInt();

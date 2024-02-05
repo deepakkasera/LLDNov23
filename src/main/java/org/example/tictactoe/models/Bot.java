@@ -6,10 +6,11 @@ public class Bot extends Player {
     private BotDifficultyLevel botDifficultyLevel;
     private BotPlayingStrategy botPlayingStrategy;
 
-    public Bot(String name, Symbol symbol, BotDifficultyLevel difficultyLevel) {
+    public Bot(String name, Symbol symbol, BotDifficultyLevel difficultyLevel, BotPlayingStrategy botPlayingStrategy) {
         super(name, symbol);
         this.botDifficultyLevel = difficultyLevel;
         this.setPlayerType(PlayerType.BOT);
+        this.botPlayingStrategy = botPlayingStrategy;
     }
 
     public BotDifficultyLevel getBotDifficultyLevel() {
@@ -26,5 +27,10 @@ public class Bot extends Player {
 
     public void setBotPlayingStrategy(BotPlayingStrategy botPlayingStrategy) {
         this.botPlayingStrategy = botPlayingStrategy;
+    }
+
+    @Override
+    public Move executeMove(Board board) {
+        return botPlayingStrategy.makeMove(board);
     }
 }
